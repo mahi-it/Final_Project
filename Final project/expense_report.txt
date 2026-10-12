@@ -1,0 +1,14 @@
+EXPENSE TRACKER REPORT
+----------------------
+Number of expenses: 20
+Total spending: Rs. 16305.00
+Average expense: Rs. 815.25
+Highest spending category: Other
+Category
+Entertainment     220.0
+Food             2720.0
+Health           1250.0
+Other            6500.0
+Shopping         3250.0
+Transport         705.0
+Utilities        1660.0
