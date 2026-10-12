@@ -9,31 +9,37 @@ import datetime
 # CSV file and valid expense categories
 categories = ["Food", "Transport", "Utilities", "Entertainment","Education", "Shopping", "Health", "Other"]
 
-
 # Class to manage expense tracking operations
 class ExpenseTracker:
 
     def add(self,file):
         # Load existing expenses 
+        try:
             self.df = pd.read_csv(file)
 
             # Convert Date and Amount to the correct data types
             self.df["Date"] = pd.to_datetime(self.df["Date"])
             self.df["Amount"] = pd.to_numeric(self.df["Amount"])
-
-            # Replace missing dates with today's date
+            
+             # Replace missing dates with today's date
             self.df["Date"] = self.df["Date"].fillna(pd.Timestamp.today())
             self.df["Date"] = self.df["Date"].dt.strftime("%Y-%m-%d")
-
+            
             # Replace missing amounts with mean value of the total amount
             self.df["Amount"] = self.df["Amount"].fillna(self.df["Amount"].mean())
-
+            
             # Replace missing categories and descriptions
             self.df["Category"] = self.df["Category"].fillna("Other")
             self.df["Description"] = self.df["Description"].fillna("No description")
-
+            
             # Save the dataset without an index column
             self.df.to_csv(file, index=False)
+        
+        except FileNotFoundError:
+            print("Error: CSV file not found.")
+
+        except PermissionError:
+            print("Error: Permission denied while accessing the file.")
 
 
     def add_expense(self, date, amount, category, description,file):
@@ -145,6 +151,8 @@ class ExpenseTracker:
         total = self.df["Amount"].sum()
         average = self.df["Amount"].mean()
         category = self.df.groupby("Category")["Amount"].sum()
+        self.df["Date"] = pd.to_datetime(self.df["Date"])
+
 
         report = ( f"EXPENSE TRACKER REPORT\n"
             f"----------------------\n"
