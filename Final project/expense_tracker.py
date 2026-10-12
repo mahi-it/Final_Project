@@ -7,7 +7,6 @@ import seaborn as sns
 import datetime
 
 # CSV file and valid expense categories
-#file = os.path.abspath("expenses.csv")
 categories = ["Food", "Transport", "Utilities", "Entertainment","Education", "Shopping", "Health", "Other"]
 
 
