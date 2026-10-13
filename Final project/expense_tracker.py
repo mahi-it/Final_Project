@@ -11,7 +11,7 @@ categories = ["Food", "Transport", "Utilities", "Entertainment","Education", "Sh
 # Class to manage expense tracking operations
 class ExpenseTracker:
 
-    def add(self,file):
+    def process_data(self,file):
         # Load existing expenses 
         try:
             self.df = pd.read_csv(file)
@@ -216,7 +216,7 @@ class ExpenseTracker:
 def main():
     tracker = ExpenseTracker()
     file="expenses.csv"
-    tracker.add(file)
+    tracker.process_data(file)
 
     while True:
         print("\n---------EXPENSE TRACKER-----------")
