@@ -68,7 +68,7 @@ mahi-it/Final_Project
 ├──Final_Project.py  
 ├── happiness_report.csv 
 ├── happiness_report(1).csv 
-└── README.md
+├── README.md
 
 ### Author
 
